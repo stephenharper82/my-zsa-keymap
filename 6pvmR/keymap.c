@@ -56,6 +56,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+/* Harper - Customised Chordal so that layer switches on thumbs not treated as opposite hands rule. Alt on left hand
+ * too so snappier alt tab as on left hand */
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT(
+            'L', 'L', 'L', 'L', 'L', 'L',                                 'R', 'R', 'R', 'R', 'R', 'R',
+            'L', 'L', 'L', 'L', 'L', 'L',                                 'R', 'R', 'R', 'R', 'R', 'R',
+            'L', 'L', '*', 'L', 'L', 'L',                                 'R', 'R', 'R', 'R', 'R', 'R',
+            'L', 'L', 'L', 'L', 'L', 'L',                                 'R', 'R', 'R', 'R', 'R', 'R',
+                                '*', '*',                                 '*', '*'
+    );
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
