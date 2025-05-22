@@ -11,13 +11,14 @@ enum custom_keycodes {
 
 
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_ESCAPE,      KC_CAPS,        KC_TRANSPARENT, KC_LBRC,        KC_RBRC,        KC_MS_BTN1,                                     KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         KC_PSCR,        KC_DELETE,      
     KC_ESCAPE,      KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_QUES,        
-    CW_TOGG,        LT(1,KC_A),     MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),MT(MOD_LGUI, KC_G),                                MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_LALT, KC_L),LT(1,KC_SCLN),  KC_QUOTE,       
+    CW_TOGG,        LT(1, KC_A),    MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),MT(MOD_LGUI, KC_G),                                MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_LALT, KC_L),LT(1, KC_SCLN), KC_QUOTE,       
     UK_BSLS,        KC_Z,           KC_X,           KC_C,           KC_V,           MEH_T(KC_B),                                    MEH_T(KC_N),    KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_TRANSPARENT, 
-                                                    LT(2,KC_SPACE), LT(5,KC_TAB),                                   LT(3,KC_BSPC),  LT(4,KC_ENTER)
+                                                    LT(2, KC_SPACE),LT(5, KC_TAB),                                  LT(3, KC_BSPC), LT(4, KC_ENTER)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -59,24 +60,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_LALT, KC_S):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LCTL, KC_D):
-            return TAPPING_TERM + 303;
         case MT(MOD_LSFT, KC_F):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LGUI, KC_G):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LGUI, KC_H):
-            return TAPPING_TERM + 303;
+            return TAPPING_TERM -100;
         case MT(MOD_LSFT, KC_J):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LCTL, KC_K):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LALT, KC_L):
-            return TAPPING_TERM + 303;
-        case LT(3,KC_BSPC):
-            return TAPPING_TERM + 404;
+            return TAPPING_TERM -100;
         default:
             return TAPPING_TERM;
     }
@@ -152,6 +139,7 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
@@ -168,6 +156,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
 
 
