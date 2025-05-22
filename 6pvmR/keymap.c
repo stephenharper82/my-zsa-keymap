@@ -11,6 +11,7 @@ enum custom_keycodes {
 
 
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_ESCAPE,      KC_CAPS,        KC_TRANSPARENT, KC_LBRC,        KC_RBRC,        KC_MS_BTN1,                                     KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         KC_PSCR,        KC_DELETE,      
@@ -69,24 +70,10 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_LALT, KC_S):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LCTL, KC_D):
-            return TAPPING_TERM + 303;
         case MT(MOD_LSFT, KC_F):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LGUI, KC_G):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LGUI, KC_H):
-            return TAPPING_TERM + 303;
+            return TAPPING_TERM -100;
         case MT(MOD_LSFT, KC_J):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LCTL, KC_K):
-            return TAPPING_TERM + 303;
-        case MT(MOD_LALT, KC_L):
-            return TAPPING_TERM + 303;
-        case LT(3,KC_BSPC):
-            return TAPPING_TERM + 404;
+            return TAPPING_TERM -100;
         default:
             return TAPPING_TERM;
     }
@@ -162,6 +149,7 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
@@ -178,6 +166,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
 
 
