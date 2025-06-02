@@ -1,7 +1,8 @@
+#define FLOW_TAP_TERM 100
 #define CHORDAL_HOLD
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "6pvmR/NoyebB"
+#define SERIAL_NUMBER "6pvmR/v64NPr"
 #define LAYER_STATE_8BIT
 
 #define TAPPING_TERM_PER_KEY
