@@ -2,7 +2,7 @@
 #define CHORDAL_HOLD
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "6pvmR/JaPJnO"
+#define SERIAL_NUMBER "6pvmR/Ynepvn"
 #define LAYER_STATE_8BIT
 
 #define TAPPING_TERM_PER_KEY
