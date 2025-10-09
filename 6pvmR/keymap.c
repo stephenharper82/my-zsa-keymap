@@ -72,26 +72,24 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_LALT, KC_S):
-            return TAPPING_TERM + 100;
+        case LT(1, KC_A):
+            return TAPPING_TERM -50;
         case MT(MOD_LCTL, KC_D):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM -100;
         case MT(MOD_LSFT, KC_F):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         case LT(2, KC_SPACE):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         case LT(5, KC_TAB):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         case MT(MOD_LSFT, KC_J):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         case MT(MOD_LCTL, KC_K):
-            return TAPPING_TERM + 100;
-        case MT(MOD_LALT, KC_L):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM -100;
         case LT(3, KC_BSPC):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         case LT(4, KC_ENTER):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         default:
             return TAPPING_TERM;
     }
@@ -201,6 +199,22 @@ bool rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case QK_MODS ... QK_MODS_MAX: 
+    // Mouse keys with modifiers work inconsistently across operating systems, this makes sure that modifiers are always
+    // applied to the mouse key that was pressed.
+    if (IS_MOUSE_KEYCODE(QK_MODS_GET_BASIC_KEYCODE(keycode))) {
+    if (record->event.pressed) {
+        add_mods(QK_MODS_GET_MODS(keycode));
+        send_keyboard_report();
+        wait_ms(2);
+        register_code(QK_MODS_GET_BASIC_KEYCODE(keycode));
+        return false;
+      } else {
+        wait_ms(2);
+        del_mods(QK_MODS_GET_MODS(keycode));
+      }
+    }
+    break;
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_F1) ) SS_DELAY(100) SS_TAP(X_ENTER));
