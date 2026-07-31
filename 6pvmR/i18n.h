@@ -13,7 +13,8 @@
 #define UK_DQUO S(KC_2)
 #define UK_TILD S(KC_NUHS)
 #define UK_PERC S(KC_5)
+#define UK_COMM KC_COMM
 #define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
 #define KC_PC_COPY LCTL(KC_C)
+#define KC_PC_CUT LCTL(KC_X)
 #define KC_PC_PASTE LCTL(KC_V)
