@@ -16,7 +16,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_HOME,        KC_PAGE_UP,     KC_PGDN,        KC_END,         KC_TRANSPARENT, KC_PSCR,        
+    KC_TRANSPARENT, KC_CAPS,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_HOME,        KC_PAGE_UP,     KC_PGDN,        KC_END,         KC_TRANSPARENT, KC_PSCR,        
     KC_ESCAPE,      KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_QUES,        
     CW_TOGG,        LT(1, KC_A),    MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),MT(MOD_LGUI, KC_G),                                MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_LALT, KC_L),LT(1, KC_SCLN), KC_QUOTE,       
     UK_BSLS,        KC_Z,           KC_X,           KC_C,           KC_V,           MEH_T(KC_B),                                    MEH_T(KC_N),    KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_TRANSPARENT, 
@@ -180,6 +180,10 @@ bool rgb_matrix_indicators_user(void) {
     }
   }
 
+  if (capslock_active && biton32(layer_state) == 0) {
+    RGB rgb = hsv_to_rgb_with_value((HSV) { 211, 255, 255 });
+    rgb_matrix_set_color( 1, rgb.r, rgb.g, rgb.b );
+  } 
   if (capslock_active && biton32(layer_state) == 1) {
     RGB rgb = hsv_to_rgb_with_value((HSV) { 211, 255, 255 });
     rgb_matrix_set_color( 12, rgb.r, rgb.g, rgb.b );
